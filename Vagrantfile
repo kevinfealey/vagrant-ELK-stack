@@ -76,6 +76,8 @@ Vagrant.configure(2) do |config|
 	cd /vagrant
 	git clone https://github.com/deviantony/docker-elk.git
 	
+	sysctl -w vm.max_map_count=262144
+
 	cd /vagrant/docker-elk
 	docker-compose up -d --build
    SHELL
