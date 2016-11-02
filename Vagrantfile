@@ -74,7 +74,7 @@ Vagrant.configure(2) do |config|
 	pip install docker-compose
 	
 	cd /vagrant
-	git clone https://github.com/deviantony/docker-elk.git
+	git clone https://github.com/kevinfealey/docker-elk.git
 	
 	sysctl -w vm.max_map_count=262144
 
