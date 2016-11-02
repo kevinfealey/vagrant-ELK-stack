@@ -24,7 +24,12 @@ Vagrant.configure(2) do |config|
 	
 	cd /vagrant
 	git clone https://github.com/kevinfealey/docker-elk.git
-	
+
+	#add example parsing files
+	git clone https://github.com/kevinfealey/logstash-multiline-xml-parsing-example.git
+	cp logstash-multiline-xml-parsing-example/sample_data.xml docker-elk/logstash/temp/sample_data.xml
+	cp logstash-multiline-xml-parsing-example/logstash.conf docker-elk/logstash/config/logstash.conf
+
 	sysctl -w vm.max_map_count=262144
 
 	cd /vagrant/docker-elk
