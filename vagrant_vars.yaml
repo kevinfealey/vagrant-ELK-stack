@@ -13,6 +13,9 @@ localhostAccess:  "false"
 networkAccess:  "true"
 vagrant_gateway:  "10.0.2.2"
 network_gateway:  "192.168.132.1"
+# You are required to change the vagrant user's password if you use the networkAccess:"true" configuration, because otherwise anyone on your network would 
+# be able to SSH to this box with the credentials vagrant:vagrant
+vagrant_user_password:  "aspect123!"
 
 # Set the hostname of the guest machine.
 guest_hostname:      "exampleHostname"
