@@ -1,0 +1,10 @@
+guest_mac_addr:  "080027225bb5" 
+
+localhostAccess:  "false"
+
+networkAccess:  "true"
+vagrant_gateway:  "10.0.2.2"
+network_gateway:  "192.168.132.1"
+
+guest_hostname:      "exampleHostname"
+
