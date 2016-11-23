@@ -30,11 +30,11 @@ Vagrant.configure(2) do |config|
 	
 	$gatewayUpdate_script = <<SCRIPT
 		#update gateway to allow it to respond outside of localhost
-		#if there is a current default gateway set to os.environ['VAGRANT_GATEWAY']
+		#if there is a current default gateway set to $VAGRANT_GATEWAY
 		echo "Setting default route."
-		if [ -n  "`ip route | grep 'default via os.environ['VAGRANT_GATEWAY']'`" ]; then 
-			route del default gw os.environ['VAGRANT_GATEWAY']
-			route add default gw os.environ['NETWORK_GATEWAY'] 
+		if [ -n  "`ip route | grep 'default via '$VAGRANT_GATEWAY`" ]; then 
+			route del default gw $VAGRANT_GATEWAY
+			route add default gw $NETWORK_GATEWAY
 			echo "Default route set."
 		else 
 			echo "Default route already set correctly."
@@ -60,7 +60,7 @@ SCRIPT
  
    config.vm.provision "shell", inline: <<-SHELL
 	apt-get update
-	apt-get upgrade
+	#apt-get upgrade
 	
 	apt-get -y install curl
 	curl -fsSL https://get.docker.com/ | sh
@@ -68,12 +68,13 @@ SCRIPT
 	apt-get -y install python-pip
 	pip install docker-compose
 	
+	apt-get -y install git 
+	
 	cd /vagrant
-	#git clone https://github.com/kevinfealey/docker-elk.git
+	git clone https://github.com/kevinfealey/docker-elk.git
 
 	sysctl -w vm.max_map_count=262144
 
-	cd /vagrant/docker-elk
-	docker-compose up -d --build
+	sh runCompose.sh
    SHELL
 end
