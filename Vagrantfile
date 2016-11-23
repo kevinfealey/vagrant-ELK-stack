@@ -36,6 +36,9 @@ Vagrant.configure(2) do |config|
 			route del default gw $VAGRANT_GATEWAY
 			route add default gw $NETWORK_GATEWAY
 			echo "Default route set."
+			
+			#echo "Updating password for vagrant user."
+			#passwd --stdin vagrant <<< "$VAGRANT_PASSWORD"
 		else 
 			echo "Default route already set correctly."
 		fi
@@ -43,7 +46,7 @@ SCRIPT
 	
 	if (settings['networkAccess'] == "true")
 		#update gateway to allow it to respond outside of localhost -- comment this line out if you only want access to the services via IP/hostname from localhost
-		config.vm.provision "shell", run: "always", inline: $gatewayUpdate_script, env: {"VAGRANT_GATEWAY" => settings['vagrant_gateway'], "NETWORK_GATEWAY" => settings['network_gateway']}
+		config.vm.provision "shell", run: "always", inline: $gatewayUpdate_script, env: {"VAGRANT_GATEWAY" => settings['vagrant_gateway'], "NETWORK_GATEWAY" => settings['network_gateway'], "VAGRANT_PASSWORD" => settings['vagrant_user_password']}
 	end
 	
 	if (settings['localhostAccess'] == "true")
