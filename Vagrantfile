@@ -37,8 +37,8 @@ Vagrant.configure(2) do |config|
 			route add default gw $NETWORK_GATEWAY
 			echo "Default route set."
 			
-			#echo "Updating password for vagrant user."
-			#passwd --stdin vagrant <<< "$VAGRANT_PASSWORD"
+			echo "Updating password for vagrant user."
+			echo "vagrant:$VAGRANT_PASSWORD" | chpasswd
 		else 
 			echo "Default route already set correctly."
 		fi
