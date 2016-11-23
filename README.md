@@ -2,7 +2,7 @@
 
 This Vagrantfile uses Docker and builds on my fork of the docker-elk project by @deviantony: https://github.com/kevinfealey/docker-elk
 
-After following the instructions below, a VM environment should exist to allow remote logging of PFSense syslog data. Once the VM is running, simply log into your PFSense dashboard, select Status -> System Logs -> and put the location of the logstash instance in the "remote log servers" box at the bottom. By default, this will be "exampleHostname:5000". Then choose your desired options on the remainder of the page and save. Data will begin appearing in the Kibana dashboard within a minute.
+After following the instructions below, a VM environment should exist to allow remote logging of PFSense syslog data. Once the VM is running, simply log into your PFSense dashboard, select Status -> System Logs -> and put the location of the logstash instance in the "remote log servers" box at the bottom. By default, this will be "exampleHostname:5000". Then choose your desired options on the remainder of the page and save. Data will begin appearing in the Kibana dashboard within a minute. This was tested in PFSense v2.3-RELEASE.
 
 To use:
 1. Clone project
