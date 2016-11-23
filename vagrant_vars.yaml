@@ -1,10 +1,19 @@
+# This is used to provide a consistent MAC address to the guest VM. I use this to enable my router to provide a static IP.
 guest_mac_addr:  "080027225bb5" 
 
+# Set to true if you want to be able to access services @ localhost (i.e. http://localhost to access Kibana). Otherwise, 
+# set to false to access services at the hosname set below (i.e. http://exampleHostname:5601 to access Kibana). Note that unless 
+# "networkAccess below is also set to true, services will only be accessible from the Host machine, since networking will not be 
+# configured to talk to the rest of the network.
 localhostAccess:  "false"
 
+# Set to true to configure the guest to be able to communicate with your network. The vagrant_gateway variable probably will not need
+# to be changed, but the network_gateway variable should match the gateway you use for internal network communication. For many with 
+# simple network configurations, this will be either 192.168.132.1 or 192.168.132.0.
 networkAccess:  "true"
 vagrant_gateway:  "10.0.2.2"
 network_gateway:  "192.168.132.1"
 
+# Set the hostname of the guest machine.
 guest_hostname:      "exampleHostname"
 
