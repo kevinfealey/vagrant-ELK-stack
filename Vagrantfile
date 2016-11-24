@@ -71,13 +71,19 @@ SCRIPT
 	apt-get -y install python-pip
 	pip install docker-compose
 	
-	apt-get -y install git 
+	apt-get -y install unzip
 	
+	#we do it this way since our install_customizations.sh may create the docker-elk folder with some files
+	mkdir /vagrant/docker-elk
 	cd /vagrant
-	git clone https://github.com/kevinfealey/docker-elk.git
-
+	wget https://github.com/kevinfealey/docker-elk/archive/master.zip
+	unzip master.zip
+	cp -avrn /vagrant/docker-elk-master/. /vagrant/docker-elk
+	rm -rf master.zip docker-elk-master
+	
 	sysctl -w vm.max_map_count=262144
 
-	sh runCompose.sh
+	cd /vagrant/docker-elk
+	docker-compose up -d
    SHELL
 end
