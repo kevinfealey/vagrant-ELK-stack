@@ -44,6 +44,10 @@ Vagrant.configure(2) do |config|
 		fi
 SCRIPT
 	
+	if (settings['setupDuo'] == "true")
+		config.vm.provision "shell", path: "setupDuo.sh", env: {"DUO_IKEY" => settings['duo_integration_key'], "DUO_SKEY" => settings['duo_secret_key'], "DUO_APIHOST" => settings['duo_api_hostname']}			
+	end
+	
 	if (settings['networkAccess'] == "true")
 		#update gateway to allow it to respond outside of localhost -- comment this line out if you only want access to the services via IP/hostname from localhost
 		config.vm.provision "shell", run: "always", inline: $gatewayUpdate_script, env: {"VAGRANT_GATEWAY" => settings['vagrant_gateway'], "NETWORK_GATEWAY" => settings['network_gateway'], "VAGRANT_PASSWORD" => settings['vagrant_user_password']}
