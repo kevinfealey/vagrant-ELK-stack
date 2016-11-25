@@ -20,3 +20,10 @@ vagrant_user_password:  "aspect123!"
 # Set the hostname of the guest machine.
 guest_hostname:      "exampleHostname"
 
+# Set up the VM to require 2FA for all PAM-managed authentication (like SSH)
+# Start by setting up an account at https://duo.com and adding a new "Unix" application to receive the keys and hostname required below
+setupDuo: "false"
+# Once you click "Protect an Application" from your Duo dashboard and select "Unix application" the following will be generated
+duo_integration_key: "DI8OG2OCQ9YNW5K1PLP6"
+duo_secret_key: "0wGRZ16QqQkU1l3JxpEGLdOSYS05RR9SBCZPMYn1"
+duo_api_hostname: "api-3f78f69d.duosecurity.com"
